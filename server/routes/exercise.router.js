@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-
+    console.log(req.body);
 });
 
 module.exports = router;
