@@ -8,3 +8,8 @@ CREATE TABLE "user" (
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL
 );
+
+CREATE TABLE "exercise" (
+    "id" SERIAL PRIMARY KEY,
+    "exercise_name" VARCHAR (200) UNIQUE NOT NULL,
+);
