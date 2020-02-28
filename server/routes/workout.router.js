@@ -6,13 +6,23 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-    
+    const queryText = `SELECT * FROM "exercise";`
+
+    pool.query(queryText).then(result => {
+        // Sends back the results in an object
+        console.log(result.rows);
+        res.send(result.rows);
+    })
+    .catch(error => {
+        console.log('error getting exercises', error);
+        res.sendStatus(500);
+    });
 });
 
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.post('/add/exercise', (req, res) => {
     console.log(req.body);
     const exerciseName = req.body.exercise;
 

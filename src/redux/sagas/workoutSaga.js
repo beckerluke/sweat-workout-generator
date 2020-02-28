@@ -9,15 +9,25 @@ function* addExercise(action) {
       withCredentials: true,
     };
     console.log(action.payload);
-    yield axios.post('api/add/exercise', action.payload);
+    yield axios.post('api/workout/add/exercise', action.payload);
 
   } catch (error) {
     console.log('Adding exercise POST request failed', error);
   }
 }
 
-function* addExerciseSaga() {
-  yield takeLatest('ADD_EXERCISE', addExercise);
+// FETCH_RANDOM_WORKOUT
+function* fetchRandomWorkout() {
+  try {
+    yield axios.get('api/workout');
+  } catch(err) {
+    console.log('Error retrieving workout', err);
+  }
 }
 
-export default addExerciseSaga;
+function* workoutSaga() {
+  yield takeLatest('ADD_EXERCISE', addExercise);
+  yield takeLatest('FETCH_RANDOM_WORKOUT', fetchRandomWorkout);
+}
+
+export default workoutSaga;

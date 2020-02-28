@@ -11,5 +11,12 @@ CREATE TABLE "user" (
 
 CREATE TABLE "exercise" (
     "id" SERIAL PRIMARY KEY,
-    "exercise_name" VARCHAR (200) UNIQUE NOT NULL,
+    "exercise_name" VARCHAR (200) UNIQUE NOT NULL
+);
+
+CREATE TABLE "workout_style" (
+	"id" SERIAL PRIMARY KEY,
+	"reps" INTEGER,
+	"sets" INTEGER,
+	"time" TIME
 );

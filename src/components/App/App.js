@@ -18,6 +18,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 
 import './App.css';
+import LandingPage from '../LandingPage/LandingPage';
 
 class App extends Component {
   componentDidMount () {
@@ -39,13 +40,17 @@ class App extends Component {
               path="/about"
               component={AddExercisePage}
             />
+            <Route 
+              exact
+              path="/home"
+              component={LandingPage}/>
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
             <ProtectedRoute
               exact
-              path="/home"
+              path="/login"
               component={UserPage}
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
