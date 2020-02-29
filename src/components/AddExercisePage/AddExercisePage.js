@@ -21,6 +21,10 @@ class addExercise extends Component {
   };
 
   addExercise = event => {
+    this.setState({
+      ...this.state,
+      addClicked: !this.state.addCLicked,
+    })
     this.props.dispatch({
       type: 'ADD_EXERCISE',
       payload: {exercise: this.state.exercise}

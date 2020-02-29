@@ -11,7 +11,14 @@ router.get('/', (req, res) => {
     pool.query(queryText).then(result => {
         // Sends back the results in an object
         console.log(result.rows);
-        res.send(result.rows);
+        const exercises = result.rows;
+        // shuffle array of exercises 
+        const shuffledExercises = exercises.sort(() => .5 - Math.random());
+        // take out first 5 exercises in shuffled array
+        const selectedExercises = shuffledExercises.slice(0,5);
+        
+        console.log(selectedExercises);
+        res.send(selectedExercises);
     })
     .catch(error => {
         console.log('error getting exercises', error);
