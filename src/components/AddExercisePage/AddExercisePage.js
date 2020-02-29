@@ -29,13 +29,13 @@ class addExercise extends Component {
   };
 
   render() {
-    
+   
     return(
       <div>
         <div>
           <label htmlFor="exercise-input">Add Exercise</label>
           <input type="text" id="exercise-input" onChange={this.handleInputChange('exercise')}></input>
-          <button onClick={this.addExercise}>ADD</button>
+          <button onClick={this.addExercise} disabled={!this.state.exercise}>ADD</button>
         </div>
       </div>
     );
