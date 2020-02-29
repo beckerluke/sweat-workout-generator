@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import ExerciseCard from './ExerciseCard/ExerciseCard';
 
 class LandingPage extends Component {
     state = {
@@ -11,9 +12,19 @@ class LandingPage extends Component {
     }
 
     render() {
+        let workoutExercises = this.props.store.workoutReducer;
+
+        console.log('THE STORE: ', this.props.store.workoutReducer);
+        const workoutExercisesArray = workoutExercises.map((exercise, i) => {
+            return (<ExerciseCard key={i} exercise={exercise} />)
+        });
+    
         return (
             <div>
                 <h2>Workout of the Day</h2>
+                <div>
+                    {workoutExercisesArray}
+                </div>
             </div>
         )
     }

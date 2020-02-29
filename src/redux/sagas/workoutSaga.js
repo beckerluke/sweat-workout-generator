@@ -10,7 +10,7 @@ function* addExercise(action) {
     };
     console.log(action.payload);
     yield axios.post('api/workout/add/exercise', action.payload);
-
+    yield put({type: 'FETCH_RANDOM_WORKOUT'});
   } catch (error) {
     console.log('Adding exercise POST request failed', error);
   }
@@ -19,7 +19,10 @@ function* addExercise(action) {
 // FETCH_RANDOM_WORKOUT
 function* fetchRandomWorkout() {
   try {
-    yield axios.get('api/workout');
+    // 5 randomly selected exercises from database
+    const response = yield axios.get('api/workout');
+    console.log(response.data);
+    yield put({type:'SET_RANDOM_WORKOUT', payload: response.data})
   } catch(err) {
     console.log('Error retrieving workout', err);
   }
