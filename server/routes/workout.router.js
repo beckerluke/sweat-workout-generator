@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     const queryText = `SELECT * FROM "exercise"
                         ORDER BY RANDOM()
                         LIMIT $1;`;
-
+                        
     const numberOfExercises = 5;
 
     pool.query(queryText, [numberOfExercises]).then(result => {
