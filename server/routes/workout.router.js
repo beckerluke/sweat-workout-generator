@@ -6,18 +6,17 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-    const queryText = `SELECT * FROM "exercise";`
+    const queryText = `SELECT * FROM "exercise"
+                        ORDER BY RANDOM()
+                        LIMIT $1;`;
 
-    pool.query(queryText).then(result => {
+    const numberOfExercises = 5;
+
+    pool.query(queryText, [numberOfExercises]).then(result => {
         // Sends back the results in an object
-        console.log(result.rows);
-        const exercises = result.rows;
-        // shuffle array of exercises 
-        const shuffledExercises = exercises.sort(() => .5 - Math.random());
-        // take out first 5 exercises in shuffled array
-        const selectedExercises = shuffledExercises.slice(0,5);
+        console.log('result.rows: ', result.rows);
+        const selectedExercises = result.rows;
         
-        console.log(selectedExercises);
         res.send(selectedExercises);
     })
     .catch(error => {
