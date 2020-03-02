@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import AddExerciseForm from './AddExerciseForm';
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is, so it doesn't need 'connect()'
 
-class addExercise extends Component {
+class addExercisePage extends Component {
   state = {
     exercise: '',
+    description: '',
   } 
   
   handleInputChange = key => event => {
@@ -21,10 +23,12 @@ class addExercise extends Component {
   };
 
   addExercise = event => {
-    this.setState({
-      ...this.state,
-      addClicked: !this.state.addCLicked,
-    })
+    event.preventDefault();
+
+    // this.setState({
+    //   ...this.state,
+    //   btnClicked: !this.state.btnCLicked,
+    // })
     this.props.dispatch({
       type: 'ADD_EXERCISE',
       payload: {exercise: this.state.exercise}
@@ -35,15 +39,12 @@ class addExercise extends Component {
   render() {
    
     return(
-      <div>
-        <div>
-          <label htmlFor="exercise-input">Add Exercise</label>
-          <input type="text" id="exercise-input" onChange={this.handleInputChange('exercise')}></input>
-          <button onClick={this.addExercise} disabled={!this.state.exercise}>ADD</button>
-        </div>
-      </div>
+
+      <section id="add-exercise-section">
+        <AddExerciseForm />
+      </section>
     );
   }
 }
 
-export default connect(mapStoreToProps)(addExercise);
+export default connect(mapStoreToProps)(addExercisePage);

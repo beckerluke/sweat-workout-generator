@@ -1,0 +1,10 @@
+#exercise-card-description {
+    margin-top: -20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 10px;
+}
+
+.exercise-card {
+    margin-left: 1em;
+    margin-bottom: 3em;
+}

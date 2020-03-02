@@ -12,6 +12,7 @@ CREATE TABLE "user" (
 CREATE TABLE "exercise" (
     "id" SERIAL PRIMARY KEY,
     "exercise_name" VARCHAR (200) UNIQUE NOT NULL
+    "description" description VARCHAR (2000)
 );
 
 CREATE TABLE "workout_style" (
@@ -20,3 +21,27 @@ CREATE TABLE "workout_style" (
 	"sets" INTEGER,
 	"time" TIME
 );
+
+-- CREATE TABLE "back_exercises" (
+--     "id" SERIAL PRIMARY KEY,
+--     "exercise_name" VARCHAR (200) UNIQUE NOT NULL,
+--     "description" VARCHAR (2000)
+-- );
+
+-- CREATE TABLE "hamstring_exercises" (
+--     "id" SERIAL PRIMARY KEY,
+--     "name" VARCHAR (200) UNIQUE NOT NULL,
+--     "description" VARCHAR (2000)
+-- );
+
+-- CREATE TABLE "quad_exercises" (
+--     "id" SERIAL PRIMARY KEY,
+--     "name" VARCHAR (200) UNIQUE NOT NULL,
+--     "description" VARCHAR (2000)
+-- );
+
+-- CREATE TABLE "_exercises" (
+--     "id" SERIAL PRIMARY KEY,
+--     "exercise_name" VARCHAR (200) UNIQUE NOT NULL,
+--     "description" VARCHAR (2O00)
+-- );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
+import './ExerciseCard.css'
 
 class ExerciseCard extends Component {
     state = {
@@ -11,9 +12,15 @@ class ExerciseCard extends Component {
         const exerciseCard = this.props.exercise;
     
         return (
-            <div>
-                {exerciseCard.exercise_name}
-            </div>
+            <section className="generated-workout">
+                <div className="exercise-card">
+                    <h5>{exerciseCard.exercise_name}</h5>
+                <p id="exercise-card-description">
+                    {exerciseCard.description}
+                </p>
+                    
+                </div>
+            </section>
         )
     }
 }

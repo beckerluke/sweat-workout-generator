@@ -30,12 +30,16 @@ router.get('/', (req, res) => {
  */
 router.post('/add/exercise', (req, res) => {
     console.log(req.body);
-    const exerciseName = req.body.exercise;
+    const exercise = req.body;
+    const exerciseName = exercise.exerciseName;
+    const exerciseDescription = exercise.exerciseDescription;
 
-    const queryText = `INSERT INTO "exercise" ("exercise_name")
-                        VALUES ($1);`;
+    const queryText = `INSERT INTO "exercise" ("exercise_name", "description")
+                        VALUES ($1, $2);`;
 
-    pool.query(queryText, [exerciseName]) 
+    const queryValues = [exerciseName, exerciseDescription];
+    
+    pool.query(queryText, queryValues) 
         .then(() => {res.sendStatus(201);})
         .catch((err) => {
             console.log('ERROR POSTING EXERCISE IN DB', err);
