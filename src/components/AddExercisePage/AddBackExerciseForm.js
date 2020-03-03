@@ -6,7 +6,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is, so it doesn't need 'connect()'
 
-class addExerciseForm extends Component {
+class addBackExerciseForm extends Component {
   state = {
     exerciseName: '',
     exerciseDescription: '',
@@ -44,13 +44,13 @@ class addExerciseForm extends Component {
    
     return(
 
-      <section id="add-exercise-section">
-        <form id="add-exercise-form" className="exercise-form" onSubmit={this.addExercise}>
-          <h4>Add Exercise</h4>
+      <section id="add-back-exercise-section">
+        <form className="add-exercise-form" onSubmit={this.addExercise}>
+          <h4>Add Back Exercise</h4>
           <label htmlFor="exercise-name-input">Name</label>
-          <input type="text" id="exercise-name-input" onChange={this.handleInputChange('exerciseName')} value={this.state.exerciseName}></input>
+          <input type="text" className="exercise-name-input" onChange={this.handleInputChange('exerciseName')} value={this.state.exerciseName}></input>
           <label htmlFor="exercise-description-input">Description</label>
-          <input type="text" id="description-input" onChange={this.handleInputChange('exerciseDescription')} value={this.state.exerciseDescription}></input>
+          <input type="text" className="description-input" onChange={this.handleInputChange('exerciseDescription')} value={this.state.exerciseDescription}></input>
           <input type="submit" name="submit" className="submitBtn" value="ADD" disabled={!this.state.exerciseName}/>
         </form>
       </section>
@@ -58,4 +58,4 @@ class addExerciseForm extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(addExerciseForm);
+export default connect(mapStoreToProps)(addBackExerciseForm);
