@@ -6,7 +6,7 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-    const queryText = `SELECT * FROM "exercise"
+    const queryText = `SELECT * FROM "chest_exercises"
                         ORDER BY RANDOM()
                         LIMIT $1;`;
                         
@@ -33,9 +33,8 @@ router.post('/add/exercise', (req, res) => {
     const exercise = req.body;
     const exerciseName = exercise.exerciseName;
     const exerciseDescription = exercise.exerciseDescription;
-    const exerciseBodyPart = exercise.exerciseBodyPart;
 
-    const queryText = `INSERT INTO "${exerciseBodyPart}" ("exercise_name", "description")
+    const queryText = `INSERT INTO "chest_exercises" ("exercise_name", "description")
                         VALUES ($1, $2);`;
 
     const queryValues = [exerciseName, exerciseDescription];

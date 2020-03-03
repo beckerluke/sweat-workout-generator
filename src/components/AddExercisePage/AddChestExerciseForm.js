@@ -10,6 +10,7 @@ class addChestExerciseForm extends Component {
   state = {
     exerciseName: '',
     exerciseDescription: '',
+    exerciseBodyPart: "chest_exercises",
   } 
   
   handleInputChange = key => event => {
@@ -27,7 +28,6 @@ class addChestExerciseForm extends Component {
     this.setState({
       exerciseName: '',
       exerciseDescription: '',
-      btnClicked: !this.state.btnCLicked,
     });
     // dispatch to workoutSaga to POST to database 
     this.props.dispatch({
@@ -35,6 +35,7 @@ class addChestExerciseForm extends Component {
       payload: {
           exerciseName: this.state.exerciseName,
           exerciseDescription: this.state.exerciseDescription,
+          exerciseBodyPart: this.state.exerciseBodyPart,
         }
     });
     

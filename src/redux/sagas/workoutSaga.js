@@ -4,13 +4,9 @@ import { put, takeLatest } from 'redux-saga/effects';
 // worker Saga: will be fired on "ADD_EXERCISE" action
 function* addExercise(action) {
   try {
-    const config = {
-      headers: { 'Content-Type': 'application/json' },
-      withCredentials: true,
-    };
     console.log(action.payload);
-    yield axios.post('api/workout/add/exercise', action.payload);
-    yield put({type: 'FETCH_RANDOM_WORKOUT'});
+    yield axios.post(`api/workout/add/exercise`, action.payload);
+    // yield put({type: 'FETCH_RANDOM_WORKOUT'});
   } catch (error) {
     console.log('Adding exercise POST request failed', error);
   }
@@ -20,7 +16,7 @@ function* addExercise(action) {
 function* fetchRandomWorkout() {
   try {
     // 5 randomly selected exercises from database
-    const response = yield axios.get('api/workout');
+    const response = yield axios.get(`api/workout`);
     console.log(response.data);
     yield put({type:'SET_RANDOM_WORKOUT', payload: response.data})
   } catch(err) {

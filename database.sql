@@ -9,11 +9,11 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL
 );
 
-CREATE TABLE "exercise" (
-    "id" SERIAL PRIMARY KEY,
-    "exercise_name" VARCHAR (200) UNIQUE NOT NULL
-    "description" description VARCHAR (2000)
-);
+-- CREATE TABLE "exercise" (
+--     "id" SERIAL PRIMARY KEY,
+--     "exercise_name" VARCHAR (200) UNIQUE NOT NULL
+--     "description" description VARCHAR (2000)
+-- );
 
 CREATE TABLE "workout_style" (
 	"id" SERIAL PRIMARY KEY,
@@ -22,11 +22,17 @@ CREATE TABLE "workout_style" (
 	"time" TIME
 );
 
--- CREATE TABLE "back_exercises" (
---     "id" SERIAL PRIMARY KEY,
---     "exercise_name" VARCHAR (200) UNIQUE NOT NULL,
---     "description" VARCHAR (2000)
--- );
+CREATE TABLE "back_exercises" (
+    "id" SERIAL PRIMARY KEY,
+    "exercise_name" VARCHAR (200) UNIQUE NOT NULL,
+    "description" VARCHAR (2000)
+);
+
+CREATE TABLE "chest_exercises" (
+    "id" SERIAL PRIMARY KEY,
+    "exercise_name" VARCHAR (200) UNIQUE NOT NULL,
+    "description" VARCHAR (2000)
+);
 
 -- CREATE TABLE "hamstring_exercises" (
 --     "id" SERIAL PRIMARY KEY,
