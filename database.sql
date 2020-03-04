@@ -12,7 +12,7 @@ CREATE TABLE "user" (
 -- CREATE TABLE "exercise" (
 --     "id" SERIAL PRIMARY KEY,
 --     "exercise_name" VARCHAR (200) UNIQUE NOT NULL
---     "description" description VARCHAR (2000)
+--     "description" VARCHAR (2000)
 -- );
 
 CREATE TABLE "workout_style" (
