@@ -35,7 +35,8 @@ router.post('/add/exercise', (req, res) => {
     const exerciseDescription = exercise.exerciseDescription;
     const exerciseBodyPart = exercise.exerciseBodyPart;
 
-    const queryText = `INSERT INTO "${exerciseBodyPart}" ("exercise_name", "description")
+    // Insert into whichever body part exercise table selected by user
+    const queryText = `INSERT INTO "${exerciseBodyPart}" ("${exerciseBodyPart}_name", "description")
                         VALUES ($1, $2);`;
 
     const queryValues = [exerciseName, exerciseDescription];

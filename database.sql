@@ -19,49 +19,49 @@ CREATE TABLE "workout_style" (
 -- EXERCISES BY BODY PART
 CREATE TABLE "back_exercises" (
     "id" SERIAL PRIMARY KEY,
-    "exercise_name" VARCHAR (200) UNIQUE NOT NULL,
+    "back_exercises_name" VARCHAR (200) UNIQUE NOT NULL,
     "description" VARCHAR (2000)
 );
 
 CREATE TABLE "chest_exercises" (
     "id" SERIAL PRIMARY KEY,
-    "exercise_name" VARCHAR (200) UNIQUE NOT NULL,
+    "chest_exercises_name" VARCHAR (200) UNIQUE NOT NULL,
     "description" VARCHAR (2000)
 );
 
 CREATE TABLE "shoulder_exercises" (
     "id" SERIAL PRIMARY KEY,
-    "exercise_name" VARCHAR (200) UNIQUE NOT NULL,
+    "shoulder_exercises_name" VARCHAR (200) UNIQUE NOT NULL,
     "description" VARCHAR (2000)
 );
 
 CREATE TABLE "quad_exercises" (
     "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR (200) UNIQUE NOT NULL,
+    "quad_exercises_name" VARCHAR (200) UNIQUE NOT NULL,
     "description" VARCHAR (2000)
 );
 
 CREATE TABLE "hamstring_exercises" (
     "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR (200) UNIQUE NOT NULL,
+    "hamstring_exercises_name" VARCHAR (200) UNIQUE NOT NULL,
     "description" VARCHAR (2000)
 );
 
 CREATE TABLE "core_exercises" (
     "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR (200) UNIQUE NOT NULL,
+    "core_exercises_name" VARCHAR (200) UNIQUE NOT NULL,
     "description" VARCHAR (2000)
 );
 
 CREATE TABLE "triceps_exercises" (
     "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR (200) UNIQUE NOT NULL,
+    "triceps_exercises_name" VARCHAR (200) UNIQUE NOT NULL,
     "description" VARCHAR (2000)
 );
 
 CREATE TABLE "biceps_exercises" (
     "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR (200) UNIQUE NOT NULL,
+    "biceps_exercises_name" VARCHAR (200) UNIQUE NOT NULL,
     "description" VARCHAR (2000)
 );
 -- END OF EXERCISES BY BODY PART
