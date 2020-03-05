@@ -30,10 +30,6 @@ const BODY_PART_ARRAY = [
     heading: 'Add Core Exercise'
   },
   {
-    bodyPart: 'trap_exercises',
-    heading: 'Add Trap Exercise'
-  },
-  {
     bodyPart: 'triceps_exercises',
     heading: 'Add Triceps Exercise'
   },
@@ -52,7 +48,7 @@ class addExercisePage extends Component {
     })
     return(
       <div>
-        <h2>ADD AN EXERCISE TO THE WORKOUT LIBRARY</h2>
+        <h2>ADD AN EXERCISE TO YOUR WORKOUT LIBRARY</h2>
         <section id="add-exercise-section">
           {addExerciseForms}
         </section>
