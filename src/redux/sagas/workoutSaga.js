@@ -16,9 +16,9 @@ function* addExercise(action) {
 function* fetchRandomWorkout() {
   try {
     // 5 randomly selected exercises from database
-    const response = yield axios.get(`api/workout`);
+    const response = yield axios.get(`api/workout/total/body`);
     console.log(response.data);
-    yield put({type:'SET_RANDOM_WORKOUT', payload: response.data})
+    // yield put({type:'SET_RANDOM_WORKOUT', payload: response.data});
   } catch(err) {
     console.log('Error retrieving workout', err);
   }

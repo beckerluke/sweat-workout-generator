@@ -3,14 +3,14 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 /**
- * GET route template
+ * GET route for chest exercises
  */
 router.get('/', (req, res) => {
     const queryText = `SELECT * FROM "chest_exercises"
                         ORDER BY RANDOM()
                         LIMIT $1;`;
                         
-    const numberOfExercises = 5;
+    const numberOfExercises = 2;
 
     pool.query(queryText, [numberOfExercises]).then(result => {
         // Sends back the results in an object

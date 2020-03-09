@@ -1,28 +1,35 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-
+const BODY_PART_ARRAY = require('../strategies/BodyPart');
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-    const queryText = `SELECT * FROM "exercise"
-                        ORDER BY RANDOM()
-                        LIMIT $1;`;
-                        
-    const numberOfExercises = 5;
+router.get('/total/body', (req, res) => {
 
-    pool.query(queryText, [numberOfExercises]).then(result => {
+    const queryText = `SELECT * FROM  "back_exercises", "chest_exercises", 
+                        "shoulder_exercises", "quad_exercises", "hamstring_exercises", 
+                        "core_exercises", "biceps_exercises", "triceps_exercises"
+                        ORDER BY RANDOM()
+                        LIMIT 1;`;
+
+    pool.query(queryText).then(result => {
         // Sends back the results in an object
         console.log('result.rows: ', result.rows);
-        const selectedExercises = result.rows;
+        // convert object of exercises into array for loop possibility
+        const selectedExercises = Object.entries(result.rows[0]);
+        // remove unnecessary id
+        const itemToRemove = selectedExercises.shift();
+        const exercisesArray = selectedExercises.filter(item => item !== itemToRemove);
+        console.log(exercisesArray);
         
-        res.send(selectedExercises);
+        // res.send(selectedExercises);
+        // res.send(selectedExercisesArray);
     })
     .catch(error => {
         console.log('error getting exercises', error);
         res.sendStatus(500);
-    });
+    }); 
 });
 
 /**
@@ -36,7 +43,7 @@ router.post('/add/exercise', (req, res) => {
     const exerciseBodyPart = exercise.exerciseBodyPart;
 
     // Insert into whichever body part exercise table selected by user
-    const queryText = `INSERT INTO "${exerciseBodyPart}" ("${exerciseBodyPart}_name", "description")
+    const queryText = `INSERT INTO "${exerciseBodyPart}" ("${exerciseBodyPart}_name", "${exerciseBodyPart}_description")
                         VALUES ($1, $2);`;
 
     const queryValues = [exerciseName, exerciseDescription];

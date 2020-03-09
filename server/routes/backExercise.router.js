@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
                         ORDER BY RANDOM()
                         LIMIT $1;`;
                         
-    const numberOfExercises = 5;
+    const numberOfExercises = 2;
 
     pool.query(queryText, [numberOfExercises]).then(result => {
         // Sends back the results in an object
