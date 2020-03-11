@@ -21,7 +21,14 @@ router.get('/total/body', (req, res) => {
         // remove unnecessary id
         const itemToRemove = selectedExercises.shift();
         const exercisesArray = selectedExercises.filter(item => item !== itemToRemove);
-        console.log(exercisesArray);
+        const convertedExercisesArray = [];
+        for (let i = 0; i < exercisesArray.length; i++) {
+            let entries = new Map([
+                exercisesArray[i],
+            ])
+            convertedExercisesArray.push(Object.fromEntries(entries));
+        }
+        console.log('convertedExercises: ', convertedExercisesArray)
         
         // res.send(selectedExercises);
         // res.send(selectedExercisesArray);
