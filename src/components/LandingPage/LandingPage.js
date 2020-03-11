@@ -12,10 +12,10 @@ class LandingPage extends Component {
     }
 
     render() {
-        let workoutExercises = this.props.store.workoutReducer;
+        let randomExercises = this.props.store.workoutReducer;
 
         console.log('THE STORE: ', this.props.store.workoutReducer);
-        const workoutExercisesArray = workoutExercises.map((exercise, i) => {
+        const randomExercisesArray = randomExercises.map((exercise, i) => {
             return (<ExerciseCard key={i} exercise={exercise} />)
         });
     
@@ -23,7 +23,7 @@ class LandingPage extends Component {
             <div>
                 <h2>Workout of the Day</h2>
                 <div>
-                    {workoutExercisesArray}
+                    {randomExercisesArray}
                 </div>
             </div>
         )

@@ -21,17 +21,19 @@ router.get('/total/body', (req, res) => {
         // remove unnecessary id
         const itemToRemove = selectedExercises.shift();
         const exercisesArray = selectedExercises.filter(item => item !== itemToRemove);
+        /* convert exercise data from database into an organized array of
+        objects according to body part exercise name and description */
         const convertedExercisesArray = [];
-        for (let i = 0; i < exercisesArray.length; i++) {
+        for (let i = 0; i < exercisesArray.length; i+=2) {
             let entries = new Map([
                 exercisesArray[i],
-            ])
+                exercisesArray[i+1],
+            ]);
             convertedExercisesArray.push(Object.fromEntries(entries));
         }
         console.log('convertedExercises: ', convertedExercisesArray)
         
-        // res.send(selectedExercises);
-        // res.send(selectedExercisesArray);
+        res.send(convertedExercisesArray);
     })
     .catch(error => {
         console.log('error getting exercises', error);
