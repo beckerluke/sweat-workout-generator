@@ -15,12 +15,14 @@ class ExerciseCard extends Component {
 
         const exerciseName = exerciseArray[0];
         const exerciseDescription = exerciseArray[1];
-        
+
         return (
             <section className="generated-workout">
                 <div className="exercise-card">
-                    <h5>{exerciseName}</h5>
-                    <br />
+                    <header>
+                        <h5>{exerciseName}</h5>
+                    </header>
+                    
                 <p id="exercise-card-description">
                     {exerciseDescription}
                 </p>

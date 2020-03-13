@@ -5,11 +5,16 @@ import ExerciseCard from './ExerciseCard/ExerciseCard';
 
 class LandingPage extends Component {
     state = {
+        fullBodyWorkoutBtnClicked: false,
     };
-    
-    componentDidMount() {
+
+    fullBodyWorkoutBtn = event =>  {
         this.props.dispatch({type: 'FETCH_RANDOM_WORKOUT'});
+        this.setState({
+            fullBodyWorkoutBtnClicked: !this.state.fullBodyWorkoutBtnClicked,
+        })
     }
+    
 
     render() {
         let randomExercises = this.props.store.workoutReducer;
@@ -22,6 +27,9 @@ class LandingPage extends Component {
         return (
             <div>
                 <h2>Workout of the Day</h2>
+                <button className="btn btn-default" 
+                    onClick={this.fullBodyWorkoutBtn}>Generate Full Body Workout
+                </button>
                 <div>
                     {randomExercisesArray}
                 </div>
