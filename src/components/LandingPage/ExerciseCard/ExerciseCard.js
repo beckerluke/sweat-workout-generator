@@ -6,17 +6,23 @@ import './ExerciseCard.css'
 class ExerciseCard extends Component {
     state = {
 
-    };
-
+    }
+    
     render() {
         const exerciseCard = this.props.exercise;
-    
+        // convert into array to extract values
+        const exerciseArray = Object.values(exerciseCard);
+
+        const exerciseName = exerciseArray[0];
+        const exerciseDescription = exerciseArray[1];
+        
         return (
             <section className="generated-workout">
                 <div className="exercise-card">
-                    <h5>{exerciseCard.exercise_name}</h5>
+                    <h5>{exerciseName}</h5>
+                    <br />
                 <p id="exercise-card-description">
-                    {exerciseCard.description}
+                    {exerciseDescription}
                 </p>
                     
                 </div>
