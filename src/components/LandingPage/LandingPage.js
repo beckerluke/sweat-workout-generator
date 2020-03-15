@@ -7,21 +7,29 @@ class LandingPage extends Component {
     state = {
         fullBodyWorkoutBtnClicked: false,
         backWorkoutClicked: false,
+        chestWorkoutClicked: false,
     };
 
     fullBodyWorkoutClick = event =>  {
-        this.props.dispatch({type: 'FETCH_RANDOM_WORKOUT'});
+        this.props.dispatch({type: 'FETCH_TOTAL_BODY_WORKOUT'});
         this.setState({
             fullBodyWorkoutBtnClicked: !this.state.fullBodyWorkoutBtnClicked,
-        })
+        });
     }
 
     backWorkoutClick = event =>  {
         
-        this.props.dispatch({type: 'FETCH_BACK_WORKOUT'});
+        this.props.dispatch({type: 'FETCH_BODY_PART_WORKOUT', payload: 'back_exercises'});
         this.setState({
             backWorkoutClicked: !this.state.backWorkoutClicked,
-        })
+        });
+    }
+
+    chestWorkoutClick = event => {
+        this.props.dispatch({type: 'FETCH_BODY_PART_WORKOUT', payload: 'chest_exercises'});
+        this.setState({
+            chestWorkoutClicked: !this.state.chestWorkoutClicked,
+        });
     }
     
 
@@ -43,6 +51,10 @@ class LandingPage extends Component {
                 <button 
                     className="btn btn-default"
                     onClick={this.backWorkoutClick}>Generate Back Workout
+                </button>
+                <button 
+                    className="btn btn-default"
+                    onClick={this.chestWorkoutClick}>Generate Chest Workout
                 </button>
                 <div>
                     {exercisesArray}

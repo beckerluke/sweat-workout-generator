@@ -27,14 +27,15 @@ function* fetchRandomWorkout() {
   }
 }
 
-// FETCH_BACK_WORKOUT
-function* fetchBackWorkout() {
+// FETCH_BODY_PART_WORKOUT
+function* fetchBodyPartWorkout(action) {
+  console.log('PAYLOAD: ', action.payload)
   try {
     const config = {
       headers: { "Content-Type": "application/json" }
     };
-    // 5 randomly selected back exercises from database
-    const response = yield axios.get(`/api/back_exercises`, config);
+    // 4 randomly selected back exercises from database
+    const response = yield axios.get(`/api/workout/bodyPart?bodyPart=${action.payload}`, config);
     console.log(response.data);
     yield put({type:'SET_WORKOUT', payload: response.data});
   } catch(err) {
@@ -44,8 +45,8 @@ function* fetchBackWorkout() {
 
 function* workoutSaga() {
   yield takeLatest('ADD_EXERCISE', addExercise);
-  yield takeLatest('FETCH_RANDOM_WORKOUT', fetchRandomWorkout);
-  yield takeLatest('FETCH_BACK_WORKOUT', fetchBackWorkout);
+  yield takeLatest('FETCH_TOTAL_BODY_WORKOUT', fetchRandomWorkout);
+  yield takeLatest('FETCH_BODY_PART_WORKOUT', fetchBodyPartWorkout);
 }
 
 export default workoutSaga;

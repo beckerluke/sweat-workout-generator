@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const BODY_PART_ARRAY = require('../strategies/BodyPart');
 /**
- * GET route template
+ * GET TOTAL BODY WORKOUT
  */
 router.get('/total/body', (req, res) => {
 
@@ -42,7 +42,35 @@ router.get('/total/body', (req, res) => {
 });
 
 /**
- * POST route template
+ * GET INDIVIDUAL WORKOUT 
+ */
+router.get('/bodyPart', (req, res) => {
+    // individual body part sent in the query by client
+    const bodyPart = req.query.bodyPart;
+    const queryText = `SELECT * FROM "${bodyPart}"
+                        ORDER BY RANDOM()
+                        LIMIT $1;`;
+                        
+    const numberOfExercises = 4;
+
+    pool.query(queryText, [numberOfExercises]).then(result => {
+        // Sends back the results in an object
+        // remove unnecessary id
+ 
+        console.log('result.rows: ', result.rows);
+        const backExercisesArray = result.rows;
+        
+        res.send(backExercisesArray);
+    })
+    .catch(error => {
+        console.log('error getting exercises', error);
+        res.sendStatus(500);
+    });
+});
+
+
+/**
+ * POST INDIVIDUAL WORKOUT
  */
 router.post('/add/exercise', (req, res) => {
     console.log(req.body);
