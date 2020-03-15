@@ -21,7 +21,22 @@ function* fetchRandomWorkout() {
     // 5 randomly selected exercises from database
     const response = yield axios.get(`api/workout/total/body`, config);
     console.log(response.data);
-    yield put({type:'SET_RANDOM_WORKOUT', payload: response.data});
+    yield put({type:'SET_WORKOUT', payload: response.data});
+  } catch(err) {
+    console.log('Error retrieving workout', err);
+  }
+}
+
+// FETCH_BACK_WORKOUT
+function* fetchBackWorkout() {
+  try {
+    const config = {
+      headers: { "Content-Type": "application/json" }
+    };
+    // 5 randomly selected back exercises from database
+    const response = yield axios.get(`/api/back_exercises`, config);
+    console.log(response.data);
+    yield put({type:'SET_WORKOUT', payload: response.data});
   } catch(err) {
     console.log('Error retrieving workout', err);
   }
@@ -30,6 +45,7 @@ function* fetchRandomWorkout() {
 function* workoutSaga() {
   yield takeLatest('ADD_EXERCISE', addExercise);
   yield takeLatest('FETCH_RANDOM_WORKOUT', fetchRandomWorkout);
+  yield takeLatest('FETCH_BACK_WORKOUT', fetchBackWorkout);
 }
 
 export default workoutSaga;

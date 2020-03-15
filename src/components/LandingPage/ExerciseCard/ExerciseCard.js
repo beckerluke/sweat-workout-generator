@@ -13,8 +13,8 @@ class ExerciseCard extends Component {
         // convert into array to extract values
         const exerciseArray = Object.values(exerciseCard);
 
-        const exerciseName = exerciseArray[0];
-        const exerciseDescription = exerciseArray[1];
+        const exerciseName = exerciseArray[exerciseArray.length - 2];
+        const exerciseDescription = exerciseArray[exerciseArray.length - 1];
 
         return (
             <section className="generated-workout">

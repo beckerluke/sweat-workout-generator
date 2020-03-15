@@ -17,7 +17,6 @@ class LandingPage extends Component {
     }
 
     backWorkoutClick = event =>  {
-        console.log('clicked');
         
         this.props.dispatch({type: 'FETCH_BACK_WORKOUT'});
         this.setState({
@@ -30,7 +29,7 @@ class LandingPage extends Component {
         let randomExercises = this.props.store.workoutReducer;
 
         console.log('THE STORE: ', this.props.store.workoutReducer);
-        const randomExercisesArray = randomExercises.map((exercise, i) => {
+        const exercisesArray = randomExercises.map((exercise, i) => {
             return (<ExerciseCard key={i} exercise={exercise} />)
         });
     
@@ -46,7 +45,7 @@ class LandingPage extends Component {
                     onClick={this.backWorkoutClick}>Generate Back Workout
                 </button>
                 <div>
-                    {randomExercisesArray}
+                    {exercisesArray}
                 </div>
             </div>
         )

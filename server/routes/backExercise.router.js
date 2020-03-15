@@ -10,14 +10,16 @@ router.get('/', (req, res) => {
                         ORDER BY RANDOM()
                         LIMIT $1;`;
                         
-    const numberOfExercises = 2;
+    const numberOfExercises = 4;
 
     pool.query(queryText, [numberOfExercises]).then(result => {
         // Sends back the results in an object
+        // remove unnecessary id
+ 
         console.log('result.rows: ', result.rows);
-        const selectedExercises = result.rows;
+        const backExercisesArray = result.rows;
         
-        res.send(selectedExercises);
+        res.send(backExercisesArray);
     })
     .catch(error => {
         console.log('error getting exercises', error);
