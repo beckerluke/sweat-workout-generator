@@ -6,8 +6,8 @@ import ExerciseCard from './ExerciseCard/ExerciseCard';
 class LandingPage extends Component {
     state = {
         fullBodyWorkoutBtnClicked: false,
-        backWorkoutClicked: false,
-        chestWorkoutClicked: false,
+        back_exercises: false,
+        chest_exercises: false,
     };
 
     fullBodyWorkoutClick = event =>  {
@@ -17,19 +17,11 @@ class LandingPage extends Component {
         });
     }
 
-    backWorkoutClick = event =>  {
-        
-        this.props.dispatch({type: 'FETCH_BODY_PART_WORKOUT', payload: 'back_exercises'});
+    handleBodyPartClick = key => event => {
+        this.props.dispatch({type: 'FETCH_BODY_PART_WORKOUT', payload: key});
         this.setState({
-            backWorkoutClicked: !this.state.backWorkoutClicked,
-        });
-    }
-
-    chestWorkoutClick = event => {
-        this.props.dispatch({type: 'FETCH_BODY_PART_WORKOUT', payload: 'chest_exercises'});
-        this.setState({
-            chestWorkoutClicked: !this.state.chestWorkoutClicked,
-        });
+            [key]: !this.state.key,
+        }, () => {console.log(this.state)});
     }
     
 
@@ -50,11 +42,11 @@ class LandingPage extends Component {
                 </button>
                 <button 
                     className="btn btn-default"
-                    onClick={this.backWorkoutClick}>Generate Back Workout
+                    onClick={this.handleBodyPartClick('back_exercises')}>Generate Back Workout
                 </button>
                 <button 
                     className="btn btn-default"
-                    onClick={this.chestWorkoutClick}>Generate Chest Workout
+                    onClick={this.handleBodyPartClick('chest_exercises')}>Generate Chest Workout
                 </button>
                 <div>
                     {exercisesArray}
