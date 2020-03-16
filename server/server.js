@@ -11,8 +11,6 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const workoutRouter = require('./routes/workout.router');
-const backExerciseRouter = require('./routes/backExercise.router');
-const chestExerciseRouter = require('./routes/chestExercise.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -28,8 +26,6 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/workout', workoutRouter);
-app.use('/api/back_exercises', backExerciseRouter);
-app.use('/api/chest_exercises', chestExerciseRouter);
 
 // Serve static files
 app.use(express.static('build'));

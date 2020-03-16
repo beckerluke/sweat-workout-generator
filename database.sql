@@ -16,6 +16,13 @@ CREATE TABLE "workout_style" (
 	"time" TIME
 );
 
+CREATE TABLE "exercise" (
+    "id" SERIAL PRIMARY KEY,
+    "name" VARCHAR (200) UNIQUE NOT NULL,
+    "description" VARCHAR (2000),
+    "type" VARCHAR (200)
+);
+
 -- EXERCISES BY BODY PART
 CREATE TABLE "back_exercises" (
     "id" SERIAL PRIMARY KEY,

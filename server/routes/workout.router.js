@@ -72,18 +72,43 @@ router.get('/bodyPart', (req, res) => {
 /**
  * POST INDIVIDUAL WORKOUT
  */
+// router.post('/add/exercise', (req, res) => {
+//     console.log(req.body);
+//     const exercise = req.body;
+//     const exerciseName = exercise.exerciseName;
+//     const exerciseDescription = exercise.exerciseDescription;
+//     const exerciseBodyPart = exercise.exerciseBodyPart;
+
+//     // Insert into whichever body part exercise table selected by user
+//     const queryText = `INSERT INTO "${exerciseBodyPart}" ("${exerciseBodyPart}_name", "${exerciseBodyPart}_description")
+//                         VALUES ($1, $2);`;
+
+//     const queryValues = [exerciseName, exerciseDescription];
+    
+//     pool.query(queryText, queryValues) 
+//         .then(() => {res.sendStatus(201);})
+//         .catch((err) => {
+//             console.log('ERROR POSTING EXERCISE IN DB', err);
+//             res.sendStatus(500)
+//         });
+
+// });
+
+/**
+ * POST INDIVIDUAL EXERCISE
+ */
 router.post('/add/exercise', (req, res) => {
     console.log(req.body);
     const exercise = req.body;
     const exerciseName = exercise.exerciseName;
     const exerciseDescription = exercise.exerciseDescription;
-    const exerciseBodyPart = exercise.exerciseBodyPart;
+    const exerciseType = exercise.exerciseType;
 
     // Insert into whichever body part exercise table selected by user
-    const queryText = `INSERT INTO "${exerciseBodyPart}" ("${exerciseBodyPart}_name", "${exerciseBodyPart}_description")
-                        VALUES ($1, $2);`;
+    const queryText = `INSERT INTO "exercise" ("name", "description", "type")
+                        VALUES ($1, $2, $3);`;
 
-    const queryValues = [exerciseName, exerciseDescription];
+    const queryValues = [exerciseName, exerciseDescription, exerciseType];
     
     pool.query(queryText, queryValues) 
         .then(() => {res.sendStatus(201);})

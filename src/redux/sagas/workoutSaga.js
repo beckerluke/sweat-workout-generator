@@ -6,7 +6,7 @@ function* addExercise(action) {
   try {
     console.log(action.payload);
     yield axios.post(`api/workout/add/exercise`, action.payload);
-    yield put({type: 'FETCH_TOTAL_BODY_WORKOUT'});
+    // yield put({type: 'FETCH_TOTAL_BODY_WORKOUT'});
   } catch (error) {
     console.log('Adding exercise POST request failed', error);
   }
