@@ -66,6 +66,11 @@ CREATE TABLE "biceps_exercises" (
 );
 -- END OF EXERCISES BY BODY PART
 
+CREATE TABLE "hiit_exercises" (
+    "id" SERIAL PRIMARY KEY,
+    "hiit_exercises_name" VARCHAR (200) UNIQUE NOT NULL,
+    "hiit_exercises_description" VARCHAR (2000)
+);
 -- CREATE TABLE "workout_log" (
 --     "id" PRIMARY SERIAL KEY,
 --     "date" timestamp,
