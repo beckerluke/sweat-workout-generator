@@ -67,75 +67,76 @@ class addExercisePage extends Component {
     exerciseType: ''
   }
 
-//   this.setState({
-//     exerciseBodyPart,
-//     heading
-//   });
+  handleInputChange = key => event => {
+    this.setState({
+      ...this.state,
+      [key]: event.target.value,
+    },
+    () => console.log(this.state)
+    );
+  };
 
+  addExercise = event => {
+    event.preventDefault();
+    
+    // dispatch to workoutSaga to POST to database 
+    this.props.dispatch({
+      type: 'ADD_EXERCISE',
+      payload: {
+          exerciseName: this.state.exerciseName,
+          exerciseDescription: this.state.exerciseDescription,
+          exerciseType: this.state.exerciseType,
+        }
+    });
 
+    // reset state when form is submitted
+    this.setState({
+      exerciseName: '',
+      exerciseDescription: '',
+      exerciseType: '',
+    });
+  };
 
-handleInputChange = key => event => {
-  this.setState({
-    ...this.state,
-    [key]: event.target.value,
-  },
-  () => console.log(this.state)
-  );
-};
-
-addExercise = event => {
-  event.preventDefault();
-  // reset state when form is submitted
-  this.setState({
-    ...this.state.exerciseType,
-    exerciseName: '',
-    exerciseDescription: '',
-  });
-  // dispatch to workoutSaga to POST to database 
-  this.props.dispatch({
-    type: 'ADD_EXERCISE',
-    payload: {
-        exerciseName: this.state.exerciseName,
-        exerciseDescription: this.state.exerciseDescription,
-        exerciseType: this.state.exerciseType,
-      }
-  });
-};
-
-render() {
- 
-  return(
-      
-    <div>
-        <h2>ADD AN EXERCISE TO YOUR WORKOUT LIBRARY</h2>
-        <section id="add-exercise-section">
-        <form className="add-exercise-form" onSubmit={this.addExercise}>
-          <h4>{this.state.heading}</h4>
-          <label htmlFor="exercise-name-input">Name</label>
-          <input type="text" className="exercise-name-input" onChange={this.handleInputChange('exerciseName')} value={this.state.exerciseName}></input>
-          <label htmlFor="exercise-description-input">Description</label>
-          <input type="text" className="description-input" onChange={this.handleInputChange('exerciseDescription')} value={this.state.exerciseDescription}></input>
-          <label htmlFor="exercise-type-input">Type</label>
-            <select 
-              className="exercise-type-input"
-              onChange={this.handleInputChange('exerciseType')}
-            >
-              <option value="back">Back</option>
-              <option value="chest">Chest</option>
-              <option value="shoulders">Shoulders</option>
-              <option value="quads">Quads</option>
-              <option value="hamstrings">Hamstrings</option>
-              <option value="core">Core</option>
-              <option value="triceps">Triceps</option>
-              <option value="biceps">Biceps</option>
-              <option value="hiit">HIIT</option>
-            </select>
-          <input type="submit" name="submit" className="submitBtn" value="ADD" disabled={!this.state.exerciseType}/>
-      </form>
-        </section>
-      </div>
-  );
-}
+  isFormValid = event => {
+     return this.state.exerciseType && this.state.exerciseName;
+  }
+  render() {
+  
+    return(
+        
+      <div>
+          <h2>ADD AN EXERCISE TO YOUR WORKOUT LIBRARY</h2>
+          <section id="add-exercise-section">
+          <form className="add-exercise-form" onSubmit={this.addExercise}>
+            <label htmlFor="exercise-name-input">Name</label>
+            <br/>
+            <input type="text" className="exercise-name-input" onChange={this.handleInputChange('exerciseName')} value={this.state.exerciseName}></input>
+            <label htmlFor="exercise-description-input">Description</label>
+            <input type="text" className="description-input" onChange={this.handleInputChange('exerciseDescription')} value={this.state.exerciseDescription}></input>
+            <br/>
+            <label htmlFor="exercise-type-input">Type</label>
+            <br/>
+              <select 
+                id="exercise-type-input"
+                onChange={this.handleInputChange('exerciseType')}
+              >
+                <option value="">Type</option>
+                <option value="back">Back</option>
+                <option value="chest">Chest</option>
+                <option value="shoulders">Shoulders</option>
+                <option value="quads">Quads</option>
+                <option value="hamstrings">Hamstrings</option>
+                <option value="core">Core</option>
+                <option value="triceps">Triceps</option>
+                <option value="biceps">Biceps</option>
+                <option value="hiit">HIIT</option>
+              </select>
+            <input type="submit" name="submit" className="submitBtn" value="ADD" disabled={!this.state.exerciseType}/>
+        </form>
+          </section>
+        </div>
+    );
+  }
 }
 
 export default connect(mapStoreToProps)(addExercisePage);
