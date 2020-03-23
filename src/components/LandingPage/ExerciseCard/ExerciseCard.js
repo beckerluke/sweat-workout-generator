@@ -10,11 +10,9 @@ class ExerciseCard extends Component {
     
     render() {
         const exerciseCard = this.props.exercise;
-        // convert into array to extract values
-        const exerciseArray = Object.values(exerciseCard);
 
-        const exerciseName = exerciseArray[exerciseArray.length - 2];
-        const exerciseDescription = exerciseArray[exerciseArray.length - 1];
+        const exerciseName = exerciseCard.name;
+        const exerciseDescription = exerciseCard.description;
 
         return (
             <section className="generated-workout">
