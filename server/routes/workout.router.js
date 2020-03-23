@@ -4,9 +4,9 @@ const router = express.Router();
 const BODY_PART_ARRAY = require('../strategies/BodyPart');
 
 /**
- * GET TOTAL BODY WORKOUT
+ * GET Full BODY WORKOUT
  */
-router.get('/total/body', (req, res) => {
+router.get('/full/body', (req, res) => {
     // query to get a random row for each body part type
     const queryText = `SELECT DISTINCT ON ("type") *
                         FROM "exercise"

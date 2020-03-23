@@ -17,14 +17,12 @@ class ExerciseCard extends Component {
         return (
             <section className="generated-workout">
                 <div className="exercise-card">
-                    <header>
+                    <header className="exercise-card-header">
                         <h5>{exerciseName}</h5>
                     </header>
-                    
-                <p id="exercise-card-description">
-                    {exerciseDescription}
-                </p>
-                    
+                    <p className="exercise-card-description">
+                        {exerciseDescription}
+                    </p>
                 </div>
             </section>
         )

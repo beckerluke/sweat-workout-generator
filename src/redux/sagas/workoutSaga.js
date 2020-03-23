@@ -19,7 +19,7 @@ function* fetchRandomWorkout() {
       headers: { "Content-Type": "application/json" }
     };
     // 5 randomly selected exercises from database
-    const response = yield axios.get(`api/workout/total/body`, config);
+    const response = yield axios.get(`api/workout/full/body`, config);
     console.log(response.data);
     yield put({type:'SET_WORKOUT', payload: response.data});
   } catch(err) {
