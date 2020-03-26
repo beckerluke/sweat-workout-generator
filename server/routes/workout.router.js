@@ -30,7 +30,8 @@ router.get('/full/body', (req, res) => {
 router.get('/bodyPart', (req, res) => {
     // individual body part sent in the query by client
     const bodyPart = req.query.bodyPart;
-    const queryText = `SELECT * FROM "${bodyPart}"
+    const queryText = `SELECT * FROM "exercise"
+                        WHERE "type" = '${bodyPart}'
                         ORDER BY RANDOM()
                         LIMIT $1;`;
                         

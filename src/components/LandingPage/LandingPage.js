@@ -42,11 +42,11 @@ class LandingPage extends Component {
                 </button>
                 <button 
                     className="btn btn-default"
-                    onClick={this.handleBodyPartClick('back_exercises')}>Generate Back Workout
+                    onClick={this.handleBodyPartClick('back')}>Generate Back Workout
                 </button>
                 <button 
                     className="btn btn-default"
-                    onClick={this.handleBodyPartClick('chest_exercises')}>Generate Chest Workout
+                    onClick={this.handleBodyPartClick('chest')}>Generate Chest Workout
                 </button>
                 <div>
                     {exercisesArray}

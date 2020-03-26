@@ -30,7 +30,7 @@ class ExerciseCard extends Component {
                     <p className="exercise-card-description">
                         {exerciseDescription}
                     </p>
-                    <button onClick={() => {this.setState({showForm: !this.state.showForm})}}>Post Your Workout</button>
+                    <button onClick={() => {this.setState({showForm: !this.state.showForm})}}>Record Exercise</button>
                     
                     {this.state.showForm ?  
                         <RecordWorkoutForm 

@@ -111,8 +111,10 @@ class addExercisePage extends Component {
             <label htmlFor="exercise-name-input">Name</label>
             <br/>
             <input type="text" className="exercise-name-input" onChange={this.handleInputChange('exerciseName')} value={this.state.exerciseName}></input>
+            <br />
             <label htmlFor="exercise-description-input">Description</label>
-            <input type="text" className="description-input" onChange={this.handleInputChange('exerciseDescription')} value={this.state.exerciseDescription}></input>
+            <br />
+            <input type="text" className="exercise-description-input" onChange={this.handleInputChange('exerciseDescription')} value={this.state.exerciseDescription}></input>
             <br/>
             <label htmlFor="exercise-type-input">Type</label>
             <br/>
