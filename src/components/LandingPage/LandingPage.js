@@ -48,6 +48,30 @@ class LandingPage extends Component {
                     className="btn btn-default"
                     onClick={this.handleBodyPartClick('chest')}>Generate Chest Workout
                 </button>
+                <button 
+                    className="btn btn-default"
+                    onClick={this.handleBodyPartClick('shoulders')}>Generate Shoulder Workout
+                </button>
+                <button 
+                    className="btn btn-default"
+                    onClick={this.handleBodyPartClick('biceps')}>Generate Biceps Workout
+                </button>
+                <button 
+                    className="btn btn-default"
+                    onClick={this.handleBodyPartClick('triceps')}>Generate Triceps Workout
+                </button>
+                <button 
+                    className="btn btn-default"
+                    onClick={this.handleBodyPartClick('quads')}>Generate Quad Workout
+                </button>
+                <button 
+                    className="btn btn-default"
+                    onClick={this.handleBodyPartClick('hamstrings')}>Generate Hamstrings Workout
+                </button>
+                <button 
+                    className="btn btn-default"
+                    onClick={this.handleBodyPartClick('core')}>Generate Core Workout
+                </button>
                 <div>
                     {exercisesArray}
                 </div>
