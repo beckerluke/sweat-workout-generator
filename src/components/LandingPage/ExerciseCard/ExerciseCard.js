@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './ExerciseCard.css';
 import RecordWorkoutForm from '../RecordWorkoutForm/RecordWorkoutForm';
+import SearchYouTubeButton from './SearchYouTubeButton';
 
 class ExerciseCard extends Component {
     state = {
@@ -30,6 +31,7 @@ class ExerciseCard extends Component {
                     <p className="exercise-card-description">
                         {exerciseDescription}
                     </p>
+                    <SearchYouTubeButton exerciseName={exerciseName}/>
                     <button onClick={() => {this.setState({showForm: !this.state.showForm})}}>Record Exercise</button>
                     
                     {this.state.showForm ?  

@@ -36,6 +36,7 @@ class LandingPage extends Component {
         return (
             <div>
                 <h2>Workout of the Day</h2>
+                {/* probably should make into a component */}
                 <button 
                     className="btn btn-default" 
                     onClick={this.fullBodyWorkoutClick}>Generate Full Body Workout
