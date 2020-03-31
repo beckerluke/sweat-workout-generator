@@ -24,7 +24,7 @@ class SearchYouTubeButton extends Component {
         }
         console.log(exerciseNameForQuery);
         // ping YouTube data API to search for exercise videos
-        let googleQuery = `https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${exerciseNameForQuery}%20exercise&type=video&videoDefinition=high&key=AIzaSyDbPjStix1huntVr5iHJVZ8XKkVghpVXAg`
+        let googleQuery = `https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${exerciseNameForQuery}%20exercise&type=video&videoDefinition=high&key=${process.env.YOUTUBE_API}`
         
         axios.get(googleQuery).then(result => {
             console.log('YouTube search results', result.data.items)
@@ -33,6 +33,7 @@ class SearchYouTubeButton extends Component {
         })
     }
     render() {
+        console.log('env:', process.env.YOUTUBE_API);
         return (
             <button onClick={this.pingYouTube}>Load Example Video</button>
         )
