@@ -43,10 +43,25 @@ function* fetchBodyPartWorkout(action) {
   }
 }
 
+function* fetchYouTubeVideo(action) {
+  try {
+    const config = {
+      headers: { "Content-Type": "application/json" }
+    };
+    // Get YouTube Video of specific exercise
+    const response = yield axios.get(`/api/workout/video?exerciseName=${action.payload}`, config);
+    // console.log(response.data);
+    // yield put({type:'SET_WORKOUT', payload: response.data});
+  } catch(err) {
+    console.log('Error retrieving workout', err);
+  }
+}
+
 function* workoutSaga() {
   yield takeLatest('ADD_EXERCISE', addExercise);
   yield takeLatest('FETCH_TOTAL_BODY_WORKOUT', fetchRandomWorkout);
   yield takeLatest('FETCH_BODY_PART_WORKOUT', fetchBodyPartWorkout);
+  yield takeLatest('FETCH_YOUTUBE_VIDEO', fetchYouTubeVideo);
 }
 
 export default workoutSaga;

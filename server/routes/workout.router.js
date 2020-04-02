@@ -1,7 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const BODY_PART_ARRAY = require('../strategies/BodyPart');
+const axios = require('axios');
 
 /**
  * GET Full BODY WORKOUT
@@ -52,6 +52,37 @@ router.get('/bodyPart', (req, res) => {
     });
 });
 
+/**
+ * GET FROM YOUTUBE API VIDEO OF EXERCISE
+ */
+router.get('/video', (req, res) => {
+    console.log(req.query);
+    const exerciseNameArray = req.query.exerciseName.split(' ');
+    let exerciseNameForQuery = ``;
+    /* if the name of the exercise is two or more words, place '%20'
+    * between words so that youTube API HTTP request works
+    */
+    if (exerciseNameArray.length > 1) {
+        exerciseNameForQuery = (exerciseNameArray.join('%20'));
+    } else {
+        exerciseNameForQuery = exerciseNameArray[0];
+    }
+    console.log(exerciseNameForQuery);
+    
+    // ping YouTube Data API
+    let googleQuery = `https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${exerciseNameForQuery}%20exercise&type=video&videoDefinition=high&key=${process.env.YOUTUBE_API}`
+        
+    axios.get(googleQuery).then(result => {
+        console.log('YouTube search results', result.data.items)
+    }).catch(err => {
+        console.log('Error getting YouTube Data', err);
+    })
+
+    .catch(error => {
+        console.log('error in api/workout/video', error);
+        res.sendStatus(500);
+    });
+});
 
 /**
  * POST INDIVIDUAL WORKOUT
