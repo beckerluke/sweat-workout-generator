@@ -73,7 +73,9 @@ router.get('/video', (req, res) => {
     let googleQuery = `https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${exerciseNameForQuery}%20exercise&type=video&videoDefinition=high&key=${process.env.YOUTUBE_API}`
         
     axios.get(googleQuery).then(result => {
-        console.log('YouTube search results', result.data.items)
+        console.log('YouTube search results: ', result.data.items[0].id.videoId)
+        const youTubeVideoId = result.data.items[0].id.videoId;
+        res.send(youTubeVideoId);
     }).catch(err => {
         console.log('Error getting YouTube Data', err);
     })
