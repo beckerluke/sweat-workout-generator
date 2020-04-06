@@ -51,7 +51,7 @@ function* fetchYouTubeVideo(action) {
     // Get YouTube Video of specific exercise
     const response = yield axios.get(`/api/workout/video?exerciseName=${action.payload}`, config);
     console.log('RESPONSE FROM YOUTUBE: ', response.data);
-    // yield put({type:'SET_WORKOUT', payload: response.data});
+    yield put({type:'SET_YOUTUBE_VIDEO', payload: response.data});
   } catch(err) {
     console.log('Error retrieving workout', err);
   }
