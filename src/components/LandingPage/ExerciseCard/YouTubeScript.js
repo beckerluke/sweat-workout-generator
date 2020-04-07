@@ -12,10 +12,8 @@ var tag = document.createElement('script');
           height: '390',
           width: '640',
           videoId: 'M7lc1UVf-VE',
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
+          playerVars: {'rel': 0},
+          events: {'onReady': onPlayerReady}
         });
       }
 
@@ -28,12 +26,18 @@ var tag = document.createElement('script');
       //    The function indicates that when playing a video (state=1),
       //    the player should play for six seconds and then stop.
       var done = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 6000);
-          done = true;
-        }
+      function pauseVideo() {
+        player.pauseVideo();
       }
+
+      function playVideo() {
+        player.playVideo();
+      }
+
       function stopVideo() {
         player.stopVideo();
+      }
+      
+      function getPlayerState() {
+          return player.getPlayerState();
       }

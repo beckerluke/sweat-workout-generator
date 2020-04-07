@@ -15,8 +15,10 @@ class SearchYouTubeButton extends Component {
     }
     render() {
         return (
-            <button onClick={this.pingYouTube}>Load Example Video</button>
-            
+            <div className="youtube-video-section">
+                <button onClick={this.pingYouTube}>Load Example Video</button>
+                <div id="iframe"></div>
+            </div>
         )
     }
 }
