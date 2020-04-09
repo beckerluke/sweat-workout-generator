@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import ExerciseCard from './ExerciseCard/ExerciseCard';
+import RenderYouTubeVideo from './SearchYouTube/RenderYouTubeVideo';
 
 class LandingPage extends Component {
     state = {
@@ -76,6 +77,7 @@ class LandingPage extends Component {
                 <div>
                     {exercisesArray}
                 </div>
+                {this.props.store.youtubeVideoReducer.length > 0 ? <RenderYouTubeVideo  /> : console.log('nothing in youtube video store')}
             </div>
         )
     }
