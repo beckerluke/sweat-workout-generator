@@ -74,10 +74,10 @@ class LandingPage extends Component {
                     className="btn btn-default"
                     onClick={this.handleBodyPartClick('core')}>Generate Core Workout
                 </button>
+                {this.props.store.youtubeVideoReducer.length > 0 ? <RenderYouTubeVideo  /> : console.log('nothing in youtube video store')}
                 <div>
                     {exercisesArray}
                 </div>
-                {this.props.store.youtubeVideoReducer.length > 0 ? <RenderYouTubeVideo  /> : console.log('nothing in youtube video store')}
             </div>
         )
     }
